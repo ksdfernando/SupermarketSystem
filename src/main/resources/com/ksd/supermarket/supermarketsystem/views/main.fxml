@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@sidebar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.MainController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="85.0" prefWidth="900.0" style="-fx-background-color: #c5c7c9;" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane prefHeight="38.0" prefWidth="900.0" style="-fx-background-color: #0a3f8a;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="715.0" layoutY="5.0" prefHeight="18.0" prefWidth="169.0" text="Smart Mart" textFill="WHITE" AnchorPane.rightAnchor="14.600000000000051" AnchorPane.topAnchor="5.0">
+                           <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                  <Button fx:id="menu" layoutY="39.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="226.0" text="Menu">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="52.0" fitWidth="74.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/icons8-menu-64.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="514.0" prefWidth="226.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="512.0" prefWidth="227.0" styleClass="sidebar-container" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ButtonBar prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-dashboards-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Dashboard">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="10.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-add-product-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#addNew" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Add New">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="79.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-stock-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" onAction="#addStock" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Add Stock">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="148.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-billing-66.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Billing">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="216.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/myStock.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="My Stock">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="285.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-financial-growth-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="My Reports">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="10.0" layoutY="354.0" prefHeight="55.0" prefWidth="226.0" styleClass="sidebar-button">
+                           <buttons>
+                              <ImageView pickOnBounds="true" styleClass="sidebar-icon">
+                                 <image>
+                                    <Image url="@image/icons8-settings-64.png" />
+                                 </image>
+                              </ImageView>
+                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Settigns">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </buttons>
+                        </ButtonBar>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <StackPane fx:id="contentArea" layoutX="204.0" layoutY="123.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+/* sidebar.css */
+
+/* Sidebar container background */
+.sidebar-container {
+    -fx-background-color: #0a3f8a;
+}
+
+/* Sidebar button styling */
+.sidebar-button {
+    -fx-background-color: #2359a6;
+    -fx-text-fill: white;
+    -fx-font-family: "Yu Gothic UI Semibold";
+    -fx-font-size: 16;
+    -fx-alignment: center-left;
+    -fx-padding: 10 0 10 20;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #3b3b3b;
+}
+
+/* Sidebar icon styling */
+.sidebar-icon {
+    -fx-fit-height: 38;
+    -fx-fit-width: 36;
+    -fx-preserve-ratio: true;
+}
