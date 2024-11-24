@@ -1,16 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-
-<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddStockController">
+<AnchorPane fx:id="contentArea" style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddStockController">
    <children>
-      <Label layoutX="166.0" layoutY="160.0" prefHeight="86.0" prefWidth="269.0" text="Label">
+      <Label layoutX="376.0" layoutY="14.0" prefHeight="44.0" prefWidth="167.0" text="Add Stock" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="399.0" AnchorPane.topAnchor="14.0">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
+      <TextField fx:id="searchtext" layoutX="294.0" layoutY="95.0" prefHeight="27.0" prefWidth="330.0" />
+      <Button layoutX="786.0" layoutY="606.0" mnemonicParsing="false" onAction="#add" prefHeight="55.0" prefWidth="144.0" text="Add">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <Button id="searchbutton" layoutX="625.0" layoutY="94.0" mnemonicParsing="false" onAction="#search" text="Search">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextFlow fx:id="resultTextFlow" layoutX="72.0" layoutY="147.2" prefHeight="66.0" prefWidth="979.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="147.0" />
+      <Label layoutX="302.0" layoutY="432.0" prefHeight="44.0" prefWidth="180.0" text="Enter Barcode">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="getBarcode" layoutX="482.0" layoutY="435.0" prefHeight="38.0" prefWidth="237.0" />
+      <Label layoutX="302.0" layoutY="517.0" prefHeight="44.0" prefWidth="180.0" text="New Stock Size">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="getSize" layoutX="482.0" layoutY="519.0" prefHeight="38.0" prefWidth="237.0" />
    </children>
 </AnchorPane>
