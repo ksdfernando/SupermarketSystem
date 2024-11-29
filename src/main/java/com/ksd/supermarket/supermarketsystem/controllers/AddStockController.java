@@ -41,7 +41,7 @@ public class AddStockController {
         if (connection != null) {
             try {
                 connection.close();
-                System.out.println("Database connection closed.");
+
             } catch (SQLException e) {
                 System.out.println("Error closing database connection.");
                 e.printStackTrace();
@@ -137,7 +137,7 @@ public class AddStockController {
                 System.out.println("xxxx");
 
                 if (rowsAffected > 0) {
-                    System.out.println("Rows updated successfully: " + rowsAffected);
+
                 } else {
                     System.out.println("No rows updated. Please check the barcode.");
                 }

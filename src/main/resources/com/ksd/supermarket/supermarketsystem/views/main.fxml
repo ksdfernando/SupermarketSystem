@@ -92,7 +92,7 @@
                                     <Image url="@image/icons8-billing-66.png" />
                                  </image>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Billing">
+                              <Button id="bil" mnemonicParsing="false" onAction="#biling" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Billing">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
