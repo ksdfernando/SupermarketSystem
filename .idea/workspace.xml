@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="2nd commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/services/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddStockController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/main.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="3rd commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +154,7 @@
       <workItem from="1732712398459" duration="224000" />
       <workItem from="1732718788228" duration="3566000" />
       <workItem from="1732760984716" duration="25745000" />
-      <workItem from="1732886289011" duration="2792000" />
+      <workItem from="1732886289011" duration="3387000" />
     </task>
     <task id="LOCAL-00001" summary="2nd commit">
       <option name="closed" value="true" />
@@ -174,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732420708423</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="3rd commit">
+      <option name="closed" value="true" />
+      <created>1732891176843</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732891176843</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +192,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="2nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="2nd commit" />
+    <MESSAGE value="3rd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="3rd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
