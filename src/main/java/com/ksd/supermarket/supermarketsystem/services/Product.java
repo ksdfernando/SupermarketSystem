@@ -74,8 +74,9 @@ public class Product {
         return totalQty;
     }
 
-    public void setTotalQty(Float totalQty) {
+    public Product setTotalQty(Float totalQty) {
         this.totalQty = totalQty;
+        return null;
     }
 
     public Float getTotalPrice() {

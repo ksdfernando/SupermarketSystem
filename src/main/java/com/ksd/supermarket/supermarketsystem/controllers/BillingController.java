@@ -1,6 +1,7 @@
 package com.ksd.supermarket.supermarketsystem.controllers;
 
 
+
 import com.ksd.supermarket.supermarketsystem.services.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,15 +20,15 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
+import java.net.Socket;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class BillingController implements Initializable  {
+
 @FXML
     private TextField codeNum;
 @FXML
@@ -60,6 +61,7 @@ private TableColumn<Product,String> sinhalaName;
 
     float qtynum =1;
     float totalamount =0;
+    int cc=0;
 
 
     ObservableList<Product> productList = FXCollections.observableArrayList(
@@ -175,53 +177,67 @@ private static Connection connection;
             System.out.println("Search text is empty");
             return;
         }
-        try {
-            openConnection();
+        ////// same Product remove
+        ObservableList<Product> data = tableView.getItems();
+        for (Product product : data) {
 
-            String searchQuery = "SELECT * FROM productdata WHERE barcode = ?  OR subCode = ?";
+            if(codeNumText.equals(product.getSubCode()) || codeNumText.equals(product.getBarcode())){
+                System.out.println("eee");
+               float x= product.getTotalQty();
+                System.out.println(x);
+                System.out.println(qtyfloat);
+                product.setTotalQty(qtyfloat+x);
+                qtyfloat = qtyfloat+x;
+                tableView.getItems().remove(product);
 
-            try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
-                preparedStatement.setString(1, codeNumText ); // Adding % for partial match
-                preparedStatement.setString(2, codeNumText );
-
-
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-
-                boolean productFound = false;
-                while (resultSet.next()) {
-
-                    String barcode = resultSet.getString("barcode");
-                    String name = resultSet.getString("productName");
-                    String subCode = resultSet.getString("subCode");
-                    String sinhalaName = resultSet.getString("sinhalaName");
-                    String stock = resultSet.getString("stock_KG_num");
-                    Float stockfloat = Float.parseFloat(stock);
-                    String price = resultSet.getString("price");
-                    qtynum= Float.parseFloat(price);
-
-                    productList.add(new Product(subCode, name, barcode, qtynum, qtyfloat, qtyfloat*qtynum,sinhalaName,stockfloat));
-                    totalamount+=qtyfloat*qtynum;
-                    System.out.println();
-                    String totalamountText= String.valueOf(totalamount);
-                    Text productText = new Text(totalamountText);
-                    productText.setStyle("-fx-font-size: 26px; -fx-fill: black; -fx-font-weight: bold; ");
-
-                    totalAmount.getChildren().clear();
-                    totalAmount.getChildren().add(productText);
-
-
-                }
-//
-//                    if (!productFound) {
-//                        Text noResultText = new Text("No products found for: " + searchtextText);
-//                        noResultText.setStyle("-fx-font-size: 14px; -fx-fill: red;");
-//                        resultTextFlow.getChildrenUnmodifiable().add(noResultText);
-//                    }
+                System.out.println(product.getTotalQty());
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
+       ////
+
+            try {
+                openConnection();
+
+                String searchQuery = "SELECT * FROM productdata WHERE barcode = ?  OR subCode = ?";
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
+                    preparedStatement.setString(1, codeNumText); // Adding % for partial match
+                    preparedStatement.setString(2, codeNumText);
+
+
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+
+                    boolean productFound = false;
+                    while (resultSet.next()) {
+
+                        String barcode = resultSet.getString("barcode");
+                        String name = resultSet.getString("productName");
+                        String subCode = resultSet.getString("subCode");
+                        String sinhalaName = resultSet.getString("sinhalaName");
+                        String stock = resultSet.getString("stock_KG_num");
+                        Float stockfloat = Float.parseFloat(stock);
+                        String price = resultSet.getString("price");
+                        qtynum = Float.parseFloat(price);
+
+                        productList.add(new Product(subCode, name, barcode, qtynum, qtyfloat, qtyfloat * qtynum, sinhalaName, stockfloat));
+                        totalamount += qtyfloat * qtynum;
+                        System.out.println();
+                        String totalamountText = String.valueOf(totalamount);
+                        Text productText = new Text(totalamountText);
+                        productText.setStyle("-fx-font-size: 26px; -fx-fill: black; -fx-font-weight: bold; ");
+
+                        totalAmount.getChildren().clear();
+                        totalAmount.getChildren().add(productText);
+
+
+                    }
+//
+//
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
 
     }
@@ -241,20 +257,57 @@ private static Connection connection;
 
         }
     }
+
+//    public void  check() {
+//        ObservableList<Product> data = tableView.getItems();
+//        for (Product product : data){
+//            String checkBarcode = product.getBarcode();
+//            String checkSubCode = product.getSubCode();
+//
+//            if(checkBarcode.equals(codeNum.getText())||checkSubCode.equals(codeNum.getText())){
+//
+//
+//                float checkqty=product.getTotalQty();
+//               float  newqty=Float.parseFloat(qty.getText()) + checkqty;
+//                System.out.println(newqty);
+//
+//                System.out.println(product.getTotalQty());
+//
+//                cc=1;
+//            }
+//
+//        }
+//
+//    }
     public void Bil(ActionEvent actionEvent) {
         ObservableList<Product> data = tableView.getItems();
 
 
 
-        System.out.println("\n \n \n");
-            System.out.println("  PRODUCT  QTY   U/PRICE       T/PRICE"   );
-        int i=0;
+        int i = 0;
+
+        // Build receipt content
+        StringBuilder receiptContent = new StringBuilder();
+        receiptContent.append("Store Name\n");
+        receiptContent.append("Address Line 1\n");
+        receiptContent.append("Address Line 2\n");
+        receiptContent.append("-------------------------------\n");
+        receiptContent.append("PRODUCT     QTY   U/PRICE  T/PRICE\n");
+
         for (Product product : data) {
 
-            System.out.println(++i  +"  "+ product.getName() + " \n " + product.getMyQTY()+"           " +product.getTotalQty() +"     " + product.getUnitPrice()+"     " + product.getTotalPrice() );
+            i++;
+            receiptContent.append(
+                    product.getName() +"\n"+
+                    product.getMyQTY() +
+                    product.getUnitPrice() +
+                    product.getTotalPrice());
+
+
+
             float sizenumber2 = product.getTotalQty();
             String getbarcodeText = product.getBarcode();
-            float sizenumber= product.getMyQTY();
+            float sizenumber = product.getMyQTY();
 
             try {
                 openConnection();
@@ -263,17 +316,17 @@ private static Connection connection;
                 try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
                     preparedStatement.setFloat(1, sizenumber - sizenumber2);
                     preparedStatement.setString(2, getbarcodeText);
-
+                     product.setMyQTY(sizenumber-sizenumber2);
                     int rowsAffected = preparedStatement.executeUpdate();
 
                     if (rowsAffected > 0) {
-
+                        System.out.println("Stock updated for product: " + product.getName());
                     } else {
                         System.out.println("No rows updated. Please check the barcode.");
                     }
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Invalid size number entered: " );
+                System.out.println("Invalid size number entered: ");
                 e.printStackTrace();
             } catch (SQLException e) {
                 System.out.println("Database error occurred while updating stock.");
@@ -282,13 +335,97 @@ private static Connection connection;
                 closeConnection();
             }
         }
+
+        receiptContent.append("-------------------------------\n");
+        receiptContent.append("Total     "+totalamount);
+        receiptContent.append("\n");
+        receiptContent.append("Cash      "+cash.getText());
+        receiptContent.append("\n");
+        float gg =Float.parseFloat(cash.getText())-totalamount;
+        receiptContent.append("Chage     "+gg);
+
+
+
+        receiptContent.append("-------------------------------\n");
+        receiptContent.append("Thank you for shopping!\n");
+
+        // Send data to the printer
+       // sendToPrinter(receiptContent.toString());
+
         tableView.getItems().clear();
         cash.clear();
         change.getChildren().clear();
         totalAmount.getChildren().clear();
+        totalamount=0;
+    }
+//        ObservableList<Product> data = tableView.getItems();
+//
+//
+//
+//        System.out.println("\n \n \n");
+//            System.out.println("  PRODUCT  QTY   U/PRICE       T/PRICE"   );
+//        int i=0;
+//        for (Product product : data) {
+//
+//            System.out.println(++i  +"  "+ product.getName() + " \n " + product.getMyQTY()+"           " +product.getTotalQty() +"     " + product.getUnitPrice()+"     " + product.getTotalPrice() );
+//            float sizenumber2 = product.getTotalQty();
+//            String getbarcodeText = product.getBarcode();
+//            float sizenumber= product.getMyQTY();
+//
+//            try {
+//
+//                openConnection();
+//
+//                String updateQuery = "UPDATE productdata SET stock_KG_num = ? WHERE barcode = ?";
+//                try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+//                    preparedStatement.setFloat(1, sizenumber - sizenumber2);
+//                    preparedStatement.setString(2, getbarcodeText);
+//
+//                    int rowsAffected = preparedStatement.executeUpdate();
+//
+//                    if (rowsAffected > 0) {
+//
+//                    } else {
+//                        System.out.println("No rows updated. Please check the barcode.");
+//                    }
+//                }
+//            } catch (NumberFormatException e) {
+//                System.out.println("Invalid size number entered: " );
+//                e.printStackTrace();
+//            } catch (SQLException e) {
+//                System.out.println("Database error occurred while updating stock.");
+//                e.printStackTrace();
+//            } finally {
+//                closeConnection();
+//            }
+//        }
+//        tableView.getItems().clear();
+//        cash.clear();
+//        change.getChildren().clear();
+//        totalAmount.getChildren().clear();
+//
+//
+//
+//    }
 
+    private void sendToPrinter(String data) {
+        try (Socket socket = new Socket("192.168.0.100", 9100)) { // Replace with your printer's IP and port
+            OutputStream out = socket.getOutputStream();
 
+            // ESC/POS commands
+            String initialize = "\u001B@"; // Initialize printer
+            String cutPaper = "\u001DVA\u0001"; // Cut paper command
+
+            // Send data
+            out.write(initialize.getBytes());
+            out.write(data.getBytes("UTF-8")); // Send receipt content
+            out.write(cutPaper.getBytes());
+
+            out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 //    public void Bil(ActionEvent actionEvent) {
 //        ObservableList<Product> data = tableView.getItems();
 //
@@ -350,6 +487,7 @@ private static Connection connection;
                    nextTotal.setStyle("-fx-font-size: 26px; -fx-fill: black; -fx-font-weight: bold; ");
                     totalAmount.getChildren().clear();
                     totalAmount.getChildren().add(nextTotal);
+
                 }
                 }
             });
