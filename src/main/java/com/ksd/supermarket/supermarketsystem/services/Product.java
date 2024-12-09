@@ -9,10 +9,11 @@ public class Product {
     private Float totalPrice;
     private String sinhalaName;
     private Float myQTY;
+    private Float marketPrice;
 
 
 
-    public Product(String subCode, String name, String barcode, Float unitPrice, Float totalQty, Float totalPrice, String sinhalaName, Float myQTY) {
+    public Product(String subCode, String name, String barcode, Float unitPrice, Float totalQty, Float totalPrice, String sinhalaName, Float myQTY, Float marketPrice) {
         this.subCode = subCode;
         this.name = name;
         this.barcode = barcode;
@@ -21,7 +22,17 @@ public class Product {
         this.totalPrice = totalPrice;
         this.sinhalaName = sinhalaName;
         this.myQTY = myQTY;
+        this.marketPrice = marketPrice;
     }
+
+    public Float getMarketPrice() {
+        return marketPrice;
+    }
+
+    public void setMarketPrice(Float marketPrice) {
+        this.marketPrice = marketPrice;
+    }
+
     public String getSinhalaName() {
         return sinhalaName;
     }
@@ -98,6 +109,7 @@ public class Product {
                 ", totalPrice=" + totalPrice +
                 ", sinhalaName='" + sinhalaName + '\'' +
                 ", myQTY=" + myQTY +
+                ", marketPrice=" + marketPrice +
                 '}';
     }
 }

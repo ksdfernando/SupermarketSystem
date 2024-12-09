@@ -19,12 +19,16 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.time.LocalDate;
 
 
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class BillingController implements Initializable  {
@@ -57,6 +61,8 @@ private TableColumn<Product,Float> totalQty;
 private TableColumn<Product,Float> myQTY;
 @FXML
 private TableColumn<Product,String> sinhalaName;
+@FXML
+private TableColumn<Product,Float> marketPrice;
 
 
     float qtynum =1;
@@ -77,6 +83,7 @@ private TableColumn<Product,String> sinhalaName;
         totalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         totalQty.setCellValueFactory(new PropertyValueFactory<>("totalQty"));
         sinhalaName.setCellValueFactory(new PropertyValueFactory<>("sinhalaName"));
+        marketPrice.setCellValueFactory(new PropertyValueFactory<>("marketPrice"));
         myQTY.setCellValueFactory(new PropertyValueFactory<>("myQTY"));
 
 
@@ -179,23 +186,26 @@ private static Connection connection;
         }
         ////// same Product remove
         ObservableList<Product> data = tableView.getItems();
-        for (Product product : data) {
+        Iterator<Product> iterator = data.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (codeNumText.equals(product.getSubCode()) || codeNumText.equals(product.getBarcode())) {
 
-            if(codeNumText.equals(product.getSubCode()) || codeNumText.equals(product.getBarcode())){
-                System.out.println("eee");
-               float x= product.getTotalQty();
+                float x = product.getTotalQty();
                 System.out.println(x);
                 System.out.println(qtyfloat);
-                product.setTotalQty(qtyfloat+x);
-                qtyfloat = qtyfloat+x;
-                tableView.getItems().remove(product);
+                product.setTotalQty(qtyfloat + x);
+                qtyfloat = qtyfloat + x;
 
                 System.out.println(product.getTotalQty());
+                iterator.remove(); // Safely removes the item during iteration
             }
         }
-       ////
+
+        ////
 
             try {
+
                 openConnection();
 
                 String searchQuery = "SELECT * FROM productdata WHERE barcode = ?  OR subCode = ?";
@@ -218,9 +228,11 @@ private static Connection connection;
                         String stock = resultSet.getString("stock_KG_num");
                         Float stockfloat = Float.parseFloat(stock);
                         String price = resultSet.getString("price");
+                        String mmprice = resultSet.getString("MarketPrice");
+                        Float  mprice = Float.parseFloat(mmprice);
                         qtynum = Float.parseFloat(price);
 
-                        productList.add(new Product(subCode, name, barcode, qtynum, qtyfloat, qtyfloat * qtynum, sinhalaName, stockfloat));
+                        productList.add(new Product(subCode, name, barcode, qtynum, qtyfloat, qtyfloat * qtynum, sinhalaName, stockfloat,mprice));
                         totalamount += qtyfloat * qtynum;
                         System.out.println();
                         String totalamountText = String.valueOf(totalamount);
@@ -257,6 +269,10 @@ private static Connection connection;
 
         }
     }
+    public void profit(KeyEvent keyEvent) {
+
+
+    }
 
 //    public void  check() {
 //        ObservableList<Product> data = tableView.getItems();
@@ -281,6 +297,7 @@ private static Connection connection;
 //    }
     public void Bil(ActionEvent actionEvent) {
         ObservableList<Product> data = tableView.getItems();
+        float totalProfit = 0;
 
 
 
@@ -292,15 +309,17 @@ private static Connection connection;
         receiptContent.append("Address Line 1\n");
         receiptContent.append("Address Line 2\n");
         receiptContent.append("-------------------------------\n");
-        receiptContent.append("PRODUCT     QTY   U/PRICE  T/PRICE\n");
+        receiptContent.append("PRODUCT     QTY   U/M/PRICE   U/PRICE  T/PRICE\n");
 
         for (Product product : data) {
 
+            float profit=0;
             i++;
             receiptContent.append(
                     product.getName() +"\n"+
                     product.getMyQTY() +
                     product.getUnitPrice() +
+                    product.getMarketPrice() +
                     product.getTotalPrice());
 
 
@@ -308,22 +327,44 @@ private static Connection connection;
             float sizenumber2 = product.getTotalQty();
             String getbarcodeText = product.getBarcode();
             float sizenumber = product.getMyQTY();
+            float pp =product.getUnitPrice();
 
             try {
                 openConnection();
 
                 String updateQuery = "UPDATE productdata SET stock_KG_num = ? WHERE barcode = ?";
+                String updateQuery2 = "SELECT * FROM productdata WHERE barcode = ? ";
+                try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery2)) {
+                    preparedStatement.setString(1, getbarcodeText); // Adding % for partial match
+                    ResultSet resultSet = preparedStatement.executeQuery();
+                    while (resultSet.next()) {
+                        String PurchasePrice = resultSet.getString("PurchasePrice");
+
+
+                     // float  purchasePricetext=Float.parseFloat(PurchasePrice);
+                        System.out.println( PurchasePrice);
+                        System.out.println(pp);
+                        System.out.println(sizenumber2);
+
+                       profit = (pp - Float.parseFloat(PurchasePrice)) * sizenumber2 ;
+                       totalProfit += profit;
+                        System.out.println(profit );//eorrr777
+                    }}
+
+
                 try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
                     preparedStatement.setFloat(1, sizenumber - sizenumber2);
                     preparedStatement.setString(2, getbarcodeText);
                      product.setMyQTY(sizenumber-sizenumber2);
                     int rowsAffected = preparedStatement.executeUpdate();
 
+
                     if (rowsAffected > 0) {
                         System.out.println("Stock updated for product: " + product.getName());
                     } else {
                         System.out.println("No rows updated. Please check the barcode.");
                     }
+
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid size number entered: ");
@@ -351,7 +392,78 @@ private static Connection connection;
 
         // Send data to the printer
        // sendToPrinter(receiptContent.toString());
+        System.out.println(totalProfit);
 
+        LocalDate myObj = LocalDate.now();
+        String dateString = myObj.toString();// Create a date object
+        System.out.println(dateString);
+
+        LocalTime myObj2 = LocalTime.now();
+
+        // Format the time to show only HH:mm:ss
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = myObj2.format(formatter);
+
+        // Print the formatted time
+        System.out.println(formattedTime);
+
+        /// input  bill data
+        String lastBillNum = null;
+        try {
+            String billNumtext = "000002";
+            openConnection();
+            String getLastBillQuery = "SELECT billNum FROM billData ORDER BY billNum DESC LIMIT 1";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(getLastBillQuery)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Retrieve the last billNum
+                    lastBillNum = resultSet.getString("billNum");
+                    int lastBillNumFloat = (int) (Float.parseFloat(lastBillNum) +1);
+                    billNumtext = String.valueOf(lastBillNumFloat);
+                    System.out.println("Last billNum: " + lastBillNum);
+                } else {
+                    System.out.println("No bills found in the database.");
+                }
+            }
+
+
+
+
+
+            String insertBillQuery = "INSERT INTO billData (billNum, bilDate, billTime, totalPrice, totalProfit) " +
+                    "VALUES (?, ?, ?, ?, ?)";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertBillQuery)) {
+                // Set values for the placeholders
+                preparedStatement.setString(1, billNumtext);
+                preparedStatement.setString(2, dateString);
+                preparedStatement.setString(3, formattedTime);
+                preparedStatement.setFloat(4, totalamount);
+                preparedStatement.setFloat(5, totalProfit);
+
+                // Execute the update
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Bill data added successfully!");
+                }
+            } catch (Exception e) {
+                System.err.println("Error executing the query: " + e.getMessage());
+            } finally {
+                // Close the connection
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (Exception e) {
+                        System.err.println("Error closing the connection: " + e.getMessage());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
         tableView.getItems().clear();
         cash.clear();
         change.getChildren().clear();

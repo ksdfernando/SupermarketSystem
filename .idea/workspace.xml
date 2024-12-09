@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="3rd commit">
+    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="4rd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddNewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddNewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/services/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/services/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/reports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/reports.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addNew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addNew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +168,10 @@
       <workItem from="1732938441453" duration="20586000" />
       <workItem from="1733030435220" duration="6125000" />
       <workItem from="1733106877236" duration="3000" />
-      <workItem from="1733373566089" duration="2333000" />
+      <workItem from="1733373566089" duration="3744000" />
+      <workItem from="1733492210667" duration="10979000" />
+      <workItem from="1733575563763" duration="8297000" />
+      <workItem from="1733711974877" duration="10741000" />
     </task>
     <task id="LOCAL-00001" summary="2nd commit">
       <option name="closed" value="true" />
@@ -194,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732891416132</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="4rd commit">
+      <option name="closed" value="true" />
+      <created>1733376282098</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733376282098</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,7 +226,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="2nd commit" />
     <MESSAGE value="3rd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="3rd commit" />
+    <MESSAGE value="4rd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="4rd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -31,6 +31,11 @@ public class AddNewController {
 
     @FXML
     private TextField price;
+    @FXML
+    private TextField marketPrice;
+
+    @FXML
+    private TextField purchasePrice;
 
     public void EnterData(ActionEvent actionEvent) {
         try {
@@ -57,6 +62,8 @@ public class AddNewController {
             String categoryNumberText = categoryNumber.getText();
             float stockValue = Float.parseFloat(stock.getText());
             float priceValue = Float.parseFloat(price.getText());
+            float marketPriceValue = Float.parseFloat(marketPrice.getText());
+            float purchasePriceValue = Float.parseFloat(purchasePrice.getText());
 
             System.out.println(productNameText + " " + sinhalaNameText + " " + barcodeText);
 
@@ -69,8 +76,8 @@ public class AddNewController {
 //            }
 
             // SQL Query to Insert Data
-            String insertQuery = "INSERT INTO productdata (productName, sinhalaName, barcode, subCode, categoryNumber, stock_KG_num, price) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO productdata (productName, sinhalaName, barcode, subCode, categoryNumber, stock_KG_num, price,MarketPrice,PurchasePrice) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?,?,?)";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 // Set parameters
@@ -81,6 +88,8 @@ public class AddNewController {
                 preparedStatement.setString(5, categoryNumberText);
                 preparedStatement.setFloat(6, stockValue);
                 preparedStatement.setFloat(7, priceValue);
+                preparedStatement.setFloat(8, marketPriceValue);
+                preparedStatement.setFloat(9, purchasePriceValue);
 
                 // Execute the query
                 int rowsInserted = preparedStatement.executeUpdate();
@@ -97,6 +106,8 @@ public class AddNewController {
                     categoryNumber.clear();
                     stock.clear();
                     price.clear();
+                    marketPrice.clear();
+                    purchasePrice.clear();
 
 
                     productName.requestFocus();

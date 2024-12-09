@@ -105,6 +105,7 @@
           <TableColumn fx:id="name" prefWidth="75.0" text="Name" />
             <TableColumn fx:id="barcode" prefWidth="75.0" text="Barcode" />
             <TableColumn fx:id="unitPrice" prefWidth="75.0" text="UnitPrice" />
+           <TableColumn fx:id="marketPrice" prefWidth="75.0" text="MarketPrice" />
             <TableColumn fx:id="totalQty" prefWidth="75.0" text="TotalQty" />
             <TableColumn fx:id="totalPrice" prefWidth="75.0" text="TotalPrice" />
            <TableColumn fx:id="sinhalaName" prefWidth="75.0" text="SinhalaName" />

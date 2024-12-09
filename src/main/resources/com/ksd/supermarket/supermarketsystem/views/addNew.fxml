@@ -8,54 +8,66 @@
 
 <AnchorPane fx:id="contentArea" style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddNewController">
    <children>
-      <TextField fx:id="productName" layoutX="500.0" layoutY="135.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="199.0" layoutY="129.0" prefHeight="43.0" prefWidth="206.0" text="Product Name">
+      <TextField fx:id="productName" layoutX="500.0" layoutY="91.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="192.0" layoutY="91.0" prefHeight="43.0" prefWidth="206.0" text="Product Name">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="sinhalaName" layoutX="500.0" layoutY="194.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="199.0" layoutY="194.0" prefHeight="43.0" prefWidth="206.0" text="Sinhala Name">
+      <TextField fx:id="sinhalaName" layoutX="500.0" layoutY="160.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="192.0" layoutY="160.0" prefHeight="43.0" prefWidth="206.0" text="Sinhala Name">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="barcode" layoutX="500.0" layoutY="270.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="199.0" layoutY="262.0" prefHeight="43.0" prefWidth="206.0" text="Barcode">
+      <TextField fx:id="barcode" layoutX="500.0" layoutY="220.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="199.0" layoutY="220.0" prefHeight="43.0" prefWidth="206.0" text="Barcode">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="subCode" layoutX="500.0" layoutY="330.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="199.0" layoutY="330.0" prefHeight="43.0" prefWidth="206.0" text="Sub Code">
+      <TextField fx:id="subCode" layoutX="500.0" layoutY="286.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="192.0" layoutY="286.0" prefHeight="43.0" prefWidth="206.0" text="Sub Code">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="categoryNumber" layoutX="500.0" layoutY="401.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="192.0" layoutY="401.0" prefHeight="43.0" prefWidth="206.0" text="Category Number">
+      <TextField fx:id="categoryNumber" layoutX="500.0" layoutY="358.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="192.0" layoutY="358.0" prefHeight="43.0" prefWidth="206.0" text="Category Number">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="730.0" layoutY="618.0" onAction="#EnterData" prefHeight="43.0" prefWidth="206.0" text="Enter">
+      <Button layoutX="898.0" layoutY="626.0" onAction="#EnterData" prefHeight="43.0" prefWidth="206.0" text="Enter">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="373.0" layoutY="39.0" prefHeight="43.0" prefWidth="206.0" text="Add New Product">
+      <Label layoutX="424.0" layoutY="14.0" prefHeight="43.0" prefWidth="206.0" text="Add New Product">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="stock" layoutX="500.0" layoutY="478.0" prefHeight="43.0" prefWidth="283.0" />
-      <TextField fx:id="price" layoutX="500.0" layoutY="549.0" prefHeight="43.0" prefWidth="283.0" />
-      <Label layoutX="199.0" layoutY="478.0" prefHeight="43.0" prefWidth="206.0" text="Stock">
+      <TextField fx:id="stock" layoutX="500.0" layoutY="412.0" prefHeight="43.0" prefWidth="283.0" />
+      <TextField fx:id="price" layoutX="500.0" layoutY="471.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="199.0" layoutY="420.0" prefHeight="43.0" prefWidth="206.0" text="Stock">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="199.0" layoutY="549.0" prefHeight="43.0" prefWidth="206.0" text="Unit Price">
+      <Label layoutX="192.0" layoutY="479.0" prefHeight="43.0" prefWidth="206.0" text="Sales Price">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="535.0" prefHeight="43.0" prefWidth="206.0" text="Market Price">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="marketPrice" layoutX="500.0" layoutY="535.0" prefHeight="43.0" prefWidth="283.0" />
+      <TextField fx:id="purchasePrice" layoutX="500.0" layoutY="605.0" prefHeight="43.0" prefWidth="283.0" />
+      <Label layoutX="192.0" layoutY="605.0" prefHeight="43.0" prefWidth="206.0" text="Purchase Price">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
