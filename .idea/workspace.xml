@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="4rd commit">
+    <list default="true" id="ca782c66-0e9f-4a67-a9d5-4f13b7ab46cd" name="Changes" comment="5rd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddNewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddNewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/BillingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/services/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/services/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addNew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addNew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/billing.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/MyStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/MyStockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AddStockController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/SettignsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ksd/supermarket/supermarketsystem/controllers/SettignsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addStock.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/addStock.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/myStock.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/myStock.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/settigns.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/ksd/supermarket/supermarketsystem/views/settigns.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +176,8 @@
       <workItem from="1733373566089" duration="3744000" />
       <workItem from="1733492210667" duration="10979000" />
       <workItem from="1733575563763" duration="8297000" />
-      <workItem from="1733711974877" duration="10741000" />
+      <workItem from="1733711974877" duration="11783000" />
+      <workItem from="1734235850051" duration="16963000" />
     </task>
     <task id="LOCAL-00001" summary="2nd commit">
       <option name="closed" value="true" />
@@ -205,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733376282098</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="5rd commit">
+      <option name="closed" value="true" />
+      <created>1733737951137</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733737951137</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +241,8 @@
     <MESSAGE value="2nd commit" />
     <MESSAGE value="3rd commit" />
     <MESSAGE value="4rd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="4rd commit" />
+    <MESSAGE value="5rd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="5rd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

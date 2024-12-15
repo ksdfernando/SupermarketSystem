@@ -106,7 +106,7 @@
                                     <Image url="@image/myStock.png" />
                                  </image>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="My Stock">
+                              <Button mnemonicParsing="false" onAction="#Mystock" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Change Price">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -134,7 +134,7 @@
                                     <Image url="@image/icons8-settings-64.png" />
                                  </image>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Settigns">
+                              <Button mnemonicParsing="false" onAction="#Settings" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Settings">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -149,7 +149,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <StackPane fx:id="contentArea" layoutX="204.0" layoutY="123.0" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <StackPane fx:id="contentArea" layoutX="204.0" layoutY="123.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </center>

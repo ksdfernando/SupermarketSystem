@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AddStockController {
+public class MyStockController {
     private static Connection connection;
 
     @FXML
@@ -26,6 +26,12 @@ public class AddStockController {
     private TextField getBarcode;
     @FXML
     private TextField getSize;
+    @FXML
+    private TextField newSalesPrice;
+    @FXML
+    private TextField newPurchasePrice;
+    @FXML
+    private TextField newMarketPrice;
     @FXML
     private TableView<Product> resultTable;
     @FXML
@@ -38,6 +44,12 @@ public class AddStockController {
     private TableColumn<Product, String> barcodeColumn;
     @FXML
     private TableColumn<Product, Float> stockColumn;
+    @FXML
+    private TableColumn<Product, Float> salesPriceColumn;
+    @FXML
+    private TableColumn<Product, Float> marketPriceColumn;
+    @FXML
+    private TableColumn<Product, Float> purchasePriceColumn;
 
     private String numstock;
 
@@ -73,6 +85,9 @@ public class AddStockController {
         sinhalaNameColumn.setCellValueFactory(new PropertyValueFactory<>("sinhalaName"));
         barcodeColumn.setCellValueFactory(new PropertyValueFactory<>("barcode"));
         stockColumn.setCellValueFactory(new PropertyValueFactory<>("totalQty"));
+        salesPriceColumn.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        marketPriceColumn.setCellValueFactory(new PropertyValueFactory<>("marketPrice"));
+        purchasePriceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
         // Bind the ObservableList to the TableView
         resultTable.setItems(products);
@@ -95,7 +110,7 @@ public class AddStockController {
             String searchQuery = "SELECT * FROM productdata WHERE barcode LIKE ? OR productName LIKE ? OR subCode LIKE ?";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(searchQuery)) {
-                preparedStatement.setString(1, "%" + searchtextText + "%"); // Adding % for partial match
+                preparedStatement.setString(1, "%" + searchtextText + "%");
                 preparedStatement.setString(2, "%" + searchtextText + "%");
                 preparedStatement.setString(3, "%" + searchtextText + "%");
 
@@ -109,8 +124,11 @@ public class AddStockController {
                     String subCode = resultSet.getString("subCode");
                     String sinhalaName = resultSet.getString("sinhalaName");
                     Float stock = resultSet.getFloat("stock_KG_num");
+                    Float marketPrice = resultSet.getFloat("MarketPrice");
+                    Float salesPrice = resultSet.getFloat("price");
+                    Float purchasePrice = resultSet.getFloat("PurchasePrice");
 
-                    Product product = new Product(subCode, name, barcode, null, stock, null, sinhalaName, null, null);
+                    Product product = new Product(subCode, name, barcode, salesPrice, stock, purchasePrice, sinhalaName, null, marketPrice);
                     products.add(product);
 
                     getBarcode.setText(barcode);
@@ -130,7 +148,7 @@ public class AddStockController {
         }
     }
 
-    public void add(ActionEvent actionEvent) {
+    public void addd() {
         String getSizeText = getSize.getText();
         String getbarcodeText = getBarcode.getText();
 
@@ -160,6 +178,7 @@ public class AddStockController {
                 getBarcode.clear();
                 getSize.clear();
 
+
                 if (rowsAffected > 0) {
                     System.out.println("Stock updated successfully.");
                 } else {
@@ -171,6 +190,68 @@ public class AddStockController {
             e.printStackTrace();
         } catch (SQLException e) {
             System.out.println("Database error occurred while updating stock.");
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+    }
+
+    public void updatePrice(ActionEvent actionEvent) {
+        String getSizeText = getSize.getText();
+
+
+        String getBarcodeText = getBarcode.getText();
+        String newSalesPriceText = newSalesPrice.getText();
+        String newPurchasePriceText = newPurchasePrice.getText();
+        String newMarketPriceText =newMarketPrice.getText();
+
+        // Validate inputs
+        if (getBarcodeText.isEmpty()) {
+            System.out.println("Barcode is empty. Update cannot proceed.");
+            return;
+        }
+
+        if (newSalesPriceText.isEmpty() && newPurchasePriceText.isEmpty() && newMarketPriceText.isEmpty()) {
+            System.out.println("Both sales price and purchase price fields are empty.");
+            return;
+        }
+
+        try {
+            float sizenumber = Float.parseFloat(numstock);
+            float sizenumber2 = Float.parseFloat(getSizeText);
+            Float newSalesPriceValue = newSalesPriceText.isEmpty() ? null : Float.parseFloat(newSalesPriceText);
+            Float newPurchasePriceValue = newPurchasePriceText.isEmpty() ? null : Float.parseFloat(newPurchasePriceText);
+
+            openConnection();
+
+            String updateQuery = "UPDATE productdata SET price = COALESCE(?, price), PurchasePrice = COALESCE(?, PurchasePrice),MarketPrice =COALESCE(?, MarketPrice), stock_KG_num =COALESCE(?, stock_KG_num)  WHERE barcode = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setObject(1, newSalesPriceValue, java.sql.Types.FLOAT);
+                preparedStatement.setObject(2, newPurchasePriceValue, java.sql.Types.FLOAT);
+                preparedStatement.setObject(3, newMarketPriceText, java.sql.Types.FLOAT);
+                preparedStatement.setFloat(4, sizenumber + sizenumber2);
+
+                preparedStatement.setString(5, getBarcodeText);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+                newSalesPrice.clear();
+                newPurchasePrice.clear();
+                newMarketPrice.clear();
+                getBarcode.clear();
+                getBarcode.clear();
+                getSize.clear();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Price updated successfully.");
+                } else {
+                    System.out.println("No rows updated. Please check the barcode.");
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid price entered. Please enter numeric values for prices.");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Database error occurred while updating prices.");
             e.printStackTrace();
         } finally {
             closeConnection();

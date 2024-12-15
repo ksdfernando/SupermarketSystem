@@ -14,6 +14,8 @@ public class App extends Application {
         primaryStage.setTitle("SmartMart System");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        primaryStage.setResizable(false);
+
 
     }
 

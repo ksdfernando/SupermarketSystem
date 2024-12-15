@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AuthController {
+
     private static Connection connection;
 
     @FXML
@@ -25,8 +26,10 @@ public class AuthController {
     @FXML
     private PasswordField inputpassword;
 
+
     public void gotoMain(ActionEvent actionEvent) {
         try {
+
             // Check or establish the database connection
             if (connection == null) {
                 connection = DriverManager.getConnection(
@@ -48,7 +51,14 @@ public class AuthController {
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/main.fxml"));
                         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        stage.setScene(new Scene(root));
+
+
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+
+
+                        stage.setMaximized(true);
+
                         stage.show();
                     } catch (IOException e) {
                         System.out.println("Failed to load main.fxml: " + e.getMessage());

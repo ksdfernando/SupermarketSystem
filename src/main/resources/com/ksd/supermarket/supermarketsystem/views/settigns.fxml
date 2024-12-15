@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.ksd.supermarket.supermarketsystem.views.Settigns"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.SettignsController">
+   <children>
+      <Label layoutX="225.0" prefHeight="58.0" prefWidth="331.0" text="Change user name and password" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="-5.0">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="681.0" layoutY="472.0" mnemonicParsing="false" onAction="#updateCredentials" prefHeight="58.0" prefWidth="147.0" text="OK" AnchorPane.leftAnchor="681.0" AnchorPane.topAnchor="472.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="name" layoutX="529.0" layoutY="75.0" prefHeight="45.0" prefWidth="211.0" AnchorPane.leftAnchor="529.0" AnchorPane.topAnchor="75.0" />
+      <TextField fx:id="nName" layoutX="529.0" layoutY="223.0" prefHeight="45.0" prefWidth="211.0" AnchorPane.leftAnchor="529.0" AnchorPane.topAnchor="223.0" />
+      <Label layoutX="174.0" layoutY="74.0" prefHeight="46.0" prefWidth="174.0" text="User Name" AnchorPane.leftAnchor="174.0" AnchorPane.topAnchor="74.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="140.0" prefHeight="46.0" prefWidth="174.0" text="password" AnchorPane.leftAnchor="174.4" AnchorPane.topAnchor="140.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="223.0" prefHeight="46.0" prefWidth="174.0" text=" New User Name" AnchorPane.leftAnchor="174.0" AnchorPane.topAnchor="223.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="174.0" layoutY="300.0" prefHeight="46.0" prefWidth="174.0" text="New Password" AnchorPane.leftAnchor="174.0" AnchorPane.topAnchor="300.0">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="password" layoutX="528.0" layoutY="140.0" prefHeight="46.0" prefWidth="211.0" />
+      <PasswordField fx:id="nPassword" layoutX="528.0" layoutY="300.0" prefHeight="46.0" prefWidth="211.0" />
+   </children>
 </AnchorPane>

@@ -50,8 +50,25 @@ public class MainController {
 
         newStage.initModality(Modality.WINDOW_MODAL);
 
-
+        newStage.setMaximized(true);
         newStage.show();
 
+    }
+
+    public void Settings(ActionEvent actionEvent) throws IOException {
+        System.out.println("Settigns");
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/settigns.fxml"));
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(fxml);
+
+    }
+
+    public void Mystock(ActionEvent actionEvent) throws IOException {
+        System.out.println("my stock");
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/myStock.fxml"));
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(fxml);
     }
 }

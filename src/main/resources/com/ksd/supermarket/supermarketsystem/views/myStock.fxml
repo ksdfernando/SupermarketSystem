@@ -1,14 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.ksd.supermarket.supermarketsystem.views.MyStock"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.MyStockController">
+    <children>
+        <!-- Title Label -->
+        <Label layoutX="326.0" layoutY="7.0" prefHeight="66.0" prefWidth="290.0" style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Change Price" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
 
+        <!-- Search Section -->
+        <Label layoutX="274.0" layoutY="92.0" text="Search:" AnchorPane.leftAnchor="274.0" AnchorPane.topAnchor="92.0">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+        <TextField fx:id="searchtext" layoutX="374.0" layoutY="92.0" prefWidth="200.0" AnchorPane.leftAnchor="374.0" AnchorPane.topAnchor="92.0" />
+        <Button layoutX="638.0" layoutY="92.0" onAction="#search" text="Search" AnchorPane.leftAnchor="638.0" AnchorPane.topAnchor="92.0">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font></Button>
+
+        <!-- TableView -->
+        <TableView fx:id="resultTable" layoutX="50.0" layoutY="141.0" prefHeight="216.0" prefWidth="905.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="141.0">
+            <columns>
+                <TableColumn fx:id="subCodeColumn" prefWidth="100.0" text="Sub Code" />
+                <TableColumn fx:id="nameColumn" prefWidth="140.0" text="Name" />
+                <TableColumn fx:id="sinhalaNameColumn" prefWidth="140.0" text="Sinhala Name" />
+                <TableColumn fx:id="barcodeColumn" prefWidth="120.0" text="Barcode" />
+                <TableColumn fx:id="stockColumn" prefWidth="100.0" text="Stock (KG/Unit)" />
+                <TableColumn fx:id="salesPriceColumn" prefWidth="100.0" text="Sales Price" />
+                <TableColumn fx:id="marketPriceColumn" prefWidth="100.0" text="Market Price" />
+                <TableColumn fx:id="purchasePriceColumn" prefWidth="100.0" text="Purchase Price" />
+
+
+            </columns>
+        </TableView>
+
+        <!-- Add Stock Section -->
+        <Label layoutX="79.0" layoutY="372.0" text="Barcode:" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="372.0">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <TextField fx:id="getBarcode" editable="false" layoutX="255.0" layoutY="364.0" prefHeight="43.0" prefWidth="254.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="364.0" />
+
+        <Label layoutX="79.0" layoutY="426.0" text="Add Size (KG):" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="426.0">
+            <font>
+                <Font size="18.0" />
+            </font></Label>
+        <TextField fx:id="getSize" layoutX="255.0" layoutY="418.0" prefHeight="43.0" prefWidth="254.0" text="0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="418.0" />
+
+        <Button layoutX="922.0" layoutY="639.0" onAction="#updatePrice" prefHeight="34.0" prefWidth="105.0" text="Update" AnchorPane.leftAnchor="922.0" AnchorPane.topAnchor="639.0">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font></Button>
+      <TextField fx:id="newSalesPrice" layoutX="255.0" layoutY="485.0" prefHeight="43.0" prefWidth="254.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="485.0" />
+      <TextField fx:id="newMarketPrice" layoutX="255.0" layoutY="540.0" prefHeight="43.0" prefWidth="254.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="540.0" />
+      <TextField fx:id="newPurchasePrice" layoutX="255.0" layoutY="599.0" prefHeight="43.0" prefWidth="254.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="599.0" />
+      <Label layoutX="79.0" layoutY="492.0" prefHeight="27.0" prefWidth="141.0" text="New Sales price" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="492.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="548.0" prefHeight="27.0" prefWidth="159.0" text="New Market Price" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="548.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="607.0" prefHeight="27.0" prefWidth="170.0" text="New Purchase Price" AnchorPane.leftAnchor="79.0" AnchorPane.topAnchor="607.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+    </children>
 </AnchorPane>
