@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.SettignsController">
+<AnchorPane prefHeight="554.0" prefWidth="866.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.SettignsController">
    <children>
       <Label layoutX="225.0" prefHeight="58.0" prefWidth="331.0" text="Change user name and password" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="-5.0">
          <font>
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="681.0" layoutY="472.0" mnemonicParsing="false" onAction="#updateCredentials" prefHeight="58.0" prefWidth="147.0" text="OK" AnchorPane.leftAnchor="681.0" AnchorPane.topAnchor="472.0">
+      <Button layoutX="695.0" layoutY="429.0" mnemonicParsing="false" onAction="#updateCredentials" prefHeight="58.0" prefWidth="147.0" text="OK" AnchorPane.leftAnchor="695.0" AnchorPane.topAnchor="430.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -43,5 +43,6 @@
       </Label>
       <PasswordField fx:id="password" layoutX="528.0" layoutY="140.0" prefHeight="46.0" prefWidth="211.0" />
       <PasswordField fx:id="nPassword" layoutX="528.0" layoutY="300.0" prefHeight="46.0" prefWidth="211.0" />
+      <AnchorPane layoutY="522.0" prefHeight="58.0" prefWidth="835.0" style="-fx-background-color: #696969;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

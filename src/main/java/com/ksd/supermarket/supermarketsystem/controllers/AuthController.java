@@ -38,16 +38,21 @@ public class AuthController {
 
             // Validate login credentials
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM logindata");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM logindata  ");
+
             if (resultSet.next()) {
+                String username1 = resultSet.getString(1);
+                String password1 = resultSet.getString(2);
+
+                resultSet.next();
                 String username = resultSet.getString(1);
                 String password = resultSet.getString(2);
 
 
-                if (inputname.getText().equals(username) && inputpassword.getText().equals(password)) {
+                if ((inputname.getText().equals(username) && inputpassword.getText().equals(password)) || (inputname.getText().equals(username1) && inputpassword.getText().equals(password1)) ) {
                     System.out.println("Login successful");
 
-                    // Load the main.fxml file
+
                     try {
                         Parent root = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/main.fxml"));
                         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -58,6 +63,7 @@ public class AuthController {
 
 
                         stage.setMaximized(true);
+
 
                         stage.show();
                     } catch (IOException e) {

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contentArea" style="-fx-background-color: #e3dcc1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddNewController">
+<AnchorPane fx:id="contentArea" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddNewController">
    <children>
       <TextField fx:id="productName" layoutX="500.0" layoutY="91.0" prefHeight="43.0" prefWidth="283.0" />
       <Label layoutX="192.0" layoutY="91.0" prefHeight="43.0" prefWidth="206.0" text="Product Name">
@@ -43,7 +43,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="424.0" layoutY="14.0" prefHeight="43.0" prefWidth="206.0" text="Add New Product">
+      <Label layoutX="424.0" layoutY="14.0" prefHeight="43.0" prefWidth="206.0" text="Add New Product" textFill="#030148">
          <font>
             <Font name="System Bold Italic" size="22.0" />
          </font>
@@ -72,5 +72,6 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="-8.0" layoutY="759.0" prefHeight="55.0" prefWidth="806.0" style="-fx-background-color: #696969;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>

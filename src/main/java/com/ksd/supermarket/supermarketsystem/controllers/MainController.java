@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -16,8 +17,10 @@ import java.util.logging.Logger;
 
 public class MainController {
 
+
     @FXML
     private StackPane contentArea;
+
 
     public void addNew(ActionEvent actionEvent) throws IOException {
         System.out.println("AddNew");
@@ -49,7 +52,7 @@ public class MainController {
         newStage.setTitle("Billing");
 
         newStage.initModality(Modality.WINDOW_MODAL);
-
+        
         newStage.setMaximized(true);
         newStage.show();
 
@@ -71,4 +74,38 @@ public class MainController {
         contentArea.getChildren().clear();
         contentArea.getChildren().add(fxml);
     }
+
+    public void reports(ActionEvent actionEvent) throws IOException {
+
+//
+           System.out.println("reports");
+
+           Parent fxml = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/reports.fxml"));
+           contentArea.getChildren().clear();
+           contentArea.getChildren().add(fxml);
+
+
+
+    }
+
+    public void initialize() {
+        try {
+
+            Dashboard(null);
+        } catch (IOException e) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, "Failed to load Dashboard", e);
+        }
+    }
+
+    public void Dashboard(ActionEvent actionEvent) throws IOException {
+        System.out.println("Dashboard");
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("/com/ksd/supermarket/supermarketsystem/views/dashboard.fxml"));
+        contentArea.getChildren().clear();
+        contentArea.getChildren().add(fxml);
+    }
+
+
+
+
 }

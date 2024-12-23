@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@sidebar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.MainController">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@sidebar.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.MainController" >
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" AnchorPane.topAnchor="0.0">
          <top>
@@ -50,7 +50,7 @@
                                     <Image url="@image/icons8-dashboards-64.png" />
                                  </image>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Dashboard">
+                              <Button mnemonicParsing="false"  onAction="#Dashboard" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="Dashboard">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -120,7 +120,7 @@
                                     <Image url="@image/icons8-financial-growth-64.png" />
                                  </image>
                               </ImageView>
-                              <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="My Reports">
+                              <Button mnemonicParsing="false"  onAction="#reports" prefHeight="42.0" prefWidth="134.0" styleClass="sidebar-button" text="My Reports">
                                  <font>
                                     <Font size="10.0" />
                                  </font>

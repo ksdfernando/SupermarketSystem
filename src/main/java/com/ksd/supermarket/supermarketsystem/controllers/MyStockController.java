@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.ksd.supermarket.supermarketsystem.services.Product;
 
@@ -19,6 +16,8 @@ import java.sql.SQLException;
 
 public class MyStockController {
     private static Connection connection;
+    @FXML
+    private PasswordField pinNum;
 
     @FXML
     private TextField searchtext;
@@ -94,6 +93,7 @@ public class MyStockController {
     }
 
     public void search(ActionEvent actionEvent) {
+        if(pinNum.getText().equals("1122")) {
         String searchtextText = searchtext.getText();
 
         // Check if the search text is empty
@@ -145,7 +145,14 @@ public class MyStockController {
             e.printStackTrace();
         } finally {
             closeConnection();
-        }
+        }}else if (pinNum.getText().equals("")) {
+        showAlert("Wrong PIN", "PIN field is empty. Please enter a valid PIN.");
+
+    }else
+    {showAlert("Wrong PIN", "Wrong PIN number. Please try again.");
+
+
+    }
     }
 
     public void addd() {
@@ -256,5 +263,12 @@ public class MyStockController {
         } finally {
             closeConnection();
         }
+    }
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null); // Optional: remove header text
+        alert.setContentText(message);
+        alert.showAndWait(); // Wait for the user to close the alert
     }
 }

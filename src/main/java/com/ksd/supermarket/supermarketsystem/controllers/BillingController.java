@@ -420,7 +420,11 @@ private static Connection connection;
                 if (resultSet.next()) {
                     // Retrieve the last billNum
                     lastBillNum = resultSet.getString("billNum");
+                    if (lastBillNum.equals(null)) {
+                        lastBillNum ="0";
+                    }
                     int lastBillNumFloat = (int) (Float.parseFloat(lastBillNum) +1);
+
                     billNumtext = String.valueOf(lastBillNumFloat);
                     System.out.println("Last billNum: " + lastBillNum);
                 } else {

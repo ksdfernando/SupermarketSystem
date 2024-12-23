@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #e3dcc1;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddStockController">
+<AnchorPane prefHeight="578.0" prefWidth="798.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ksd.supermarket.supermarketsystem.controllers.AddStockController">
    <children>
       <!-- Title Label -->
-      <Label layoutX="326.0" layoutY="7.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add Stock" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="5.0" />
+      <Label layoutX="326.0" layoutY="7.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add Stock" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+         </font></Label>
 
       <!-- Search Section -->
       <Label layoutX="181.0" layoutY="50.0" text="Search:" AnchorPane.leftAnchor="181.0" AnchorPane.topAnchor="50.0">
@@ -48,9 +51,10 @@
          </font></Label>
       <TextField fx:id="getSize" layoutX="255.0" layoutY="418.0" prefHeight="43.0" prefWidth="254.0" AnchorPane.leftAnchor="255.0" AnchorPane.topAnchor="418.0" />
 
-      <Button layoutX="730.0" layoutY="480.0" onAction="#add" prefHeight="34.0" prefWidth="105.0" text="Add Stock" AnchorPane.leftAnchor="730.0" AnchorPane.topAnchor="480.0">
+      <Button layoutX="737.0" layoutY="478.0" onAction="#add" prefHeight="34.0" prefWidth="105.0" text="Add Stock" AnchorPane.leftAnchor="737.0" AnchorPane.topAnchor="478.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font></Button>
+      <AnchorPane layoutX="-6.0" layoutY="555.0" prefHeight="50.0" prefWidth="798.0" style="-fx-background-color: #696969;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
